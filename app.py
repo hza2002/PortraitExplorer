@@ -17,8 +17,12 @@ with gr.Blocks(theme="nuttea/Softblue", title="智能人像分析器") as demo:
             pic1 = gr.Image(label="图片1", type="filepath")
             pic2 = gr.Image(label="图片2", type="filepath")
         with gr.Row():
-            result = gr.Textbox(label="比对结果")
+            examples = gr.Examples(
+                examples=[["examples/pic1.jpeg", "examples/pic2.jpeg"]],
+                inputs=[pic1, pic2],
+            )
             compare = gr.Button(value="开始比对")
+            result = gr.Textbox(label="比对结果")
 
             def display_compare(data):
                 res = f"可信度: {data['score']}\n结果: {data['desc']}"
@@ -40,8 +44,13 @@ with gr.Blocks(theme="nuttea/Softblue", title="智能人像分析器") as demo:
     with gr.Tab("人脸特征分析"):
         with gr.Row():
             img = gr.Image(label="分析图片", type="filepath")
-            result = gr.TextArea(label="分析结果")
-        analyze = gr.Button(value="开始分析")
+            with gr.Column():
+                examples = gr.Examples(
+                    examples=[["examples/pic1.jpeg"], ["examples/pic2.jpeg"]],
+                    inputs=[img],
+                )
+                result = gr.TextArea(label="分析结果")
+                analyze = gr.Button(value="开始分析")
 
         def display_analyze(data):
             result = ""
