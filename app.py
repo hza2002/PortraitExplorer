@@ -26,9 +26,11 @@ with gr.Blocks(theme="nuttea/Softblue", title="智能人像分析器") as demo:
 
             @compare.click(inputs=[pic1, pic2], outputs=result)
             def face_compare(img1_path, img2_path):
-                appid = cfg["FACE_COMPARE_APPID"]
-                api_secret = cfg["FACE_COMPARE_APISECRET"]
-                api_key = cfg["FACE_COMPARE_APIKEY"]
+                appid, api_secret, api_key = (
+                    cfg["FACE_COMPARE_APPID"],
+                    cfg["FACE_COMPARE_APISECRET"],
+                    cfg["FACE_COMPARE_APIKEY"],
+                )
                 res = FaceCompare(
                     appid, api_secret, api_key, img1_path, img2_path
                 ).run()
@@ -49,8 +51,10 @@ with gr.Blocks(theme="nuttea/Softblue", title="智能人像分析器") as demo:
 
         @analyze.click(inputs=img, outputs=result)
         def face_analyze(img_path):
-            appid = cfg["FACE_ANALYZE_APPID"]
-            api_key = cfg["FACE_ANALYZE_APIKEY"]
+            appid, api_key = (
+                cfg["FACE_ANALYZE_APPID"],
+                cfg["FACE_ANALYZE_APIKEY"],
+            )
             res = FaceFeature(appid, api_key, img_path).face_local_analysis()
             res = display_analyze(res)
             return res
