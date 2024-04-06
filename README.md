@@ -1,4 +1,4 @@
-# Portrait intelligence explorer
+# Portrait explorer
 
 Use gradio to build the interactive interface, and rely on the [iFlytek](https://www.xfyun.cn/) platform API to implement the following functions:
 - Face compare

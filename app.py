@@ -1,7 +1,6 @@
 import gradio as gr
 from dotenv import dotenv_values
-from face_compare import FaceCompare
-from face_feature_analysis import FaceFeature
+from modules import *
 
 cfg = dotenv_values(".env")
 

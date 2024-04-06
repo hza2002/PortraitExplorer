@@ -30,7 +30,6 @@ class Url:
 
 
 class FaceCompare:
-
     def __init__(self, appid, api_secret, api_key, path1, path2, server_id="s67c9c78c"):
         # 请填写控制台获取的APPID、APISecret、APIKey以及要比对的图片路径
         self.appid = appid
